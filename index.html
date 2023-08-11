@@ -592,7 +592,7 @@
                     </div>
                     <div>
 
-                      <form id="form" action="">
+                      <form id="submit-form" action="https://script.google.com/macros/s/AKfycbzCFs89ldXTIg9hB9Ercbdmz8BAXxckt93T3wpVH5ugYXTePCSPWbQp9RNyhJCjytwIig/exec">
                         <div class="row">
                           <div class="col-md-12 mb-3">
                             <div class="form-group">
@@ -704,7 +704,7 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
   <script src="script.js"></script>
 
-  <script>
+  <!-- <script>
     const btn = document.getElementById('button');
 
     document.getElementById('form')
@@ -725,6 +725,25 @@
             alert(JSON.stringify(err));
           });
       });
+  </script> -->
+    <script>
+      $("#submit-form").submit((e)=>{
+          e.preventDefault()
+          $.ajax({
+              url:"https://script.google.com/macros/s/AKfycbzCFs89ldXTIg9hB9Ercbdmz8BAXxckt93T3wpVH5ugYXTePCSPWbQp9RNyhJCjytwIig/exec",
+              data:$("#submit-form").serialize(),
+              method:"post",
+              success:function (response){
+                  alert("Form submitted successfully")
+                  window.location.reload()
+                  //window.location.href="https://google.com"
+              },
+              error:function (err){
+                  alert("Something Error")
+  
+              }
+          })
+      })
   </script>
 
 
